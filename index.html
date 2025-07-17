@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farewell</title>
+  <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Pacifico&family=Great+Vibes&family=Sacramento&family=Allura:wght@400&family=Alex+Brush&family=Pinyon+Script&family=Euphoria+Script&display=swap" rel="stylesheet">
+
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-out forwards',
+            'slide-up': 'slideUp 0.8s ease-out forwards',
+            'gentle-float': 'gentleFloat 4s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            gentleFloat: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    * {
+      font-family: 'Inter', system-ui, sans-serif !important;
+    }
+    
+    body {
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  background-color: #0f172a;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+  
+
+.main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+    
+    /* Enhanced text gradients with beautiful typography */
+    .text-gradient-gold {
+      color: #000000 !important;
+      text-shadow: 0 0 20px rgba(213, 24, 216, 0.8), 0 0 40px rgba(108, 55, 141, 0.6) !important;
+      font-weight: 600 !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      letter-spacing: -0.02em;
+    }
+    
+    .text-gradient-pink {
+      color: #FF69B4 !important;
+      text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 0 0 40px rgba(255, 105, 180, 0.6) !important;
+      font-weight: 600 !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      letter-spacing: -0.01em;
+    }
+    
+    .text-gradient-blue {
+      color: #00BFFF !important;
+      text-shadow: 0 0 20px rgba(0, 191, 255, 0.8), 0 0 40px rgba(0, 191, 255, 0.6) !important;
+      font-weight: 600 !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      letter-spacing: -0.01em;
+    }
+    
+    .text-super-bright {
+      color: #2010b5 !important;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(255, 255, 255, 0.7), 0 0 60px rgba(255, 255, 255, 0.5) !important;
+      font-weight: 500 !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+    }
+    
+    .text-bright-coral {
+      color: #000000 !important;
+      text-shadow: 0 0 20px rgba(255, 99, 71, 0.9), 0 0 40px rgba(255, 99, 71, 0.7) !important;
+      font-weight: 500 !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+    }
+    
+    .text-bright-cyan {
+      color: #bb00ff !important;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.9), 0 0 40px rgba(0, 255, 255, 0.7) !important;
+      font-weight: 500 !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+    }
+    
+    .glass-morphism {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+    
+    .card-premium {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .card-premium:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      background: rgba(255, 255, 255, 1);
+    }
+    
+    .profile-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .profile-container::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+      z-index: -1;
+    }
+    
+    .carousel-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 24px;
+    }
+    
+    .carousel-item {
+      min-width: 320px;
+      flex-shrink: 0;
+    }
+    
+    .image-placeholder {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .image-placeholder::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      animation: gentleFloat 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Bouncing Teddy Bears / Soft Toys */
+    .bouncing-teddy {
+      position: fixed;
+      font-size: 2rem;
+      z-index: 10;
+      animation: bounce-around 15s infinite linear;
+      pointer-events: none;
+      opacity: 0.6;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+    
+    .bouncing-teddy:nth-child(odd) {
+      animation-duration: 18s;
+      animation-delay: -3s;
+    }
+    
+    .bouncing-teddy:nth-child(even) {
+      animation-duration: 20s;
+      animation-delay: -6s;
+    }
+    
+    @keyframes bounce-around {
+      0% {
+        transform: translate(0, 100vh) rotate(0deg);
+      }
+      25% {
+        transform: translate(20vw, 75vh) rotate(90deg);
+      }
+      50% {
+        transform: translate(80vw, 25vh) rotate(180deg);
+      }
+      75% {
+        transform: translate(60vw, 85vh) rotate(270deg);
+      }
+      100% {
+        transform: translate(0, 100vh) rotate(360deg);
+      }
+    }
+    
+    .bouncing-teddy-2 {
+      animation: bounce-diagonal 14s infinite ease-in-out;
+    }
+    
+    @keyframes bounce-diagonal {
+      0%, 100% {
+        transform: translate(-10vw, 100vh) scale(0.8) rotate(0deg);
+      }
+      25% {
+        transform: translate(30vw, 20vh) scale(1.2) rotate(45deg);
+      }
+      50% {
+        transform: translate(90vw, 60vh) scale(0.9) rotate(180deg);
+      }
+      75% {
+        transform: translate(70vw, 10vh) scale(1.1) rotate(270deg);
+      }
+    }
+    
+    .bouncing-teddy-3 {
+      animation: float-bubble 16s infinite ease-in-out;
+    }
+    
+    @keyframes float-bubble {
+      0% {
+        transform: translate(100vw, 90vh) scale(0.6);
+        opacity: 0.3;
+      }
+      20% {
+        transform: translate(80vw, 30vh) scale(1);
+        opacity: 0.8;
+      }
+      40% {
+        transform: translate(40vw, 70vh) scale(0.8);
+        opacity: 0.6;
+      }
+      60% {
+        transform: translate(10vw, 20vh) scale(1.1);
+        opacity: 0.9;
+      }
+      80% {
+        transform: translate(30vw, 80vh) scale(0.7);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translate(100vw, 90vh) scale(0.6);
+        opacity: 0.3;
+      }
+    }
+    
+    /* Gallery styles */
+    .gallery-item {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Mobile responsive adjustments */
+    @media (max-width: 640px) {
+      .gallery-item {
+        margin-bottom: 1rem;
+      }
+    }
+    
+    /* Enhanced typography and font styles */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter', system-ui, sans-serif !important;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+    }
+    
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.2;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+    }
+    
+    h3 {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      line-height: 1.3;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    
+    p {
+      font-family: 'Inter', system-ui, sans-serif !important;
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: 0.005em;
+      font-size: clamp(1rem, 2vw, 1.125rem);
+    }
+    
+    .text-elegant {
+      font-family: 'Inter', system-ui, sans-serif !important;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      line-height: 1.8;
+    }
+    
+    .text-refined {
+      font-family: 'Inter', system-ui, sans-serif !important;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password Protection Overlay -->
+  <div id="authOverlay" class="fixed inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center z-50">
+    <div class="glass-morphism rounded-3xl p-8 max-w-md w-full mx-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-light text-white mb-2">🔒 Protected Content</h2>
+        <p class="text-gray-300">Enter password to view the farewell page by Shubham</p>
+      </div>
+      
+      <form id="authForm" class="space-y-6">
+        <div>
+          <input 
+            type="password" 
+            id="passwordInput" 
+            placeholder="Enter password..." 
+            class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+            autocomplete="current-password"
+          />
+        </div>
+        
+        <button 
+          type="submit" 
+          class="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-medium hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-200"
+        >
+          Access Memories ✨
+        </button>
+        
+        <div id="errorMessage" class="text-red-400 text-sm text-center hidden">
+          Incorrect password. Please try again.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Content (Initially Hidden) -->
+  <div id="mainContent" class="hidden">
+
+  <!-- Floating Orbs for Ambient Animation -->
+  <div class="floating-orb w-96 h-96 top-10 -left-48" style="animation-delay: 0s;"></div>
+  <div class="floating-orb w-64 h-64 top-96 -right-32" style="animation-delay: 2s;"></div>
+  <div class="floating-orb w-80 h-80 bottom-10 left-10" style="animation-delay: 4s;"></div>
+
+  <!-- Bouncing Teddy Bears / Soft Toys -->
+  <div class="bouncing-teddy">🧸</div>
+  <div class="bouncing-teddy bouncing-teddy-2" style="animation-delay: -1s;">🐻</div>
+  <div class="bouncing-teddy bouncing-teddy-3" style="animation-delay: -3s;">🐰</div>
+  <div class="bouncing-teddy" style="animation-delay: -5s; font-size: 1.5rem;">🦄</div>
+  <div class="bouncing-teddy bouncing-teddy-2" style="animation-delay: -2.5s; font-size: 2.5rem;">🐼</div>
+  <div class="bouncing-teddy bouncing-teddy-3" style="animation-delay: -4.5s;">🦁</div>
+  <div class="bouncing-teddy" style="animation-delay: -6s; font-size: 1.8rem;">🐶</div>
+  <div class="bouncing-teddy bouncing-teddy-2" style="animation-delay: -7s;">🐱</div>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center px-6 relative">
+    <div class="text-center max-w-4xl mx-auto">
+      <!-- Profile Image -->
+      <div class="profile-container mb-8 scroll-reveal">
+        <div class="w-40 h-40 rounded-full overflow-hidden mx-auto">
+          <img src="assets/photo5.jpeg" 
+               alt="Profile" 
+               class="w-full h-full object-cover" />
+        </div>
+      </div>
+      
+      <!-- Main Heading -->
+<h1 class="text-3xl md:text-5xl font-light text-gradient-gold mb-6 scroll-reveal text-elegant" style="animation-delay: 0.2s;">
+  A Farewell Full of Memories, Divyaaaa ✨
+</h1>
+
+<!-- Subtitle -->
+<p class="text-l md:text-l text-super-bright max-w-3xl mx-auto leading-relaxed mb-8 scroll-reveal text-elegant" style="animation-delay: 0.4s;">
+  From unknown colleagues in cubicles to friends, and maybe something more 💫.
+  <br><span class="text-xl text-bright-coral font-medium text-refined">This journey has been unforgettable ✨.</span>
+</p>
+
+      
+      <!-- CTA -->
+      <div class="scroll-reveal" style="animation-delay: 0.6s;">
+        <a href="#memories" class="inline-flex items-center px-8 py-4 glass-morphism rounded-full text-super-bright font-medium hover:bg-white/20 transition-all duration-300">
+          <span>Explore Memories</span>
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-out forwards',
+            'slide-up': 'slideUp 0.8s ease-out forwards',
+            'gentle-float': 'gentleFloat 4s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            gentleFloat: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    .glass-morphism {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+    
+    .card-premium {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .card-premium:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      background: rgba(255, 255, 255, 1);
+    }
+    
+    .profile-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .profile-container::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+      z-index: -1;
+    }
+    
+    .carousel-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 24px;
+    }
+    
+    .carousel-item {
+      min-width: 320px;
+      flex-shrink: 0;
+    }
+    
+    .image-placeholder {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .image-placeholder::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      animation: gentleFloat 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-200 min-h-screen font-sans">
+
+  <!-- Header -->
+  <!-- <section class="text-center py-12 px-4">
+    <h1 class="text-5xl font-bold text-purple-700 mb-4">Goodbye, But Not Really...</h1>
+    <p class="text-lg text-gray-700 max-w-xl mx-auto">
+      From all the smiles, talks, coffee breaks — to silent glances and shared memories.  
+      <br><span class="text-pink-600 font-semibold">You’re more than just a colleague to me.</span>
+    </p>
+  </section> -->
+
+  <!-- Memory Gallery -->
+  <section id="memories" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl md:text-5xl font-light text-gradient-pink mb-4 text-elegant">
+          Our Beautiful Journey
+        </h2>
+        <p class="text-xl text-bright-cyan max-w-2xl mx-auto text-refined">
+          Every picture tells a story, every moment holds a memory
+        </p>
+      </div>
+      
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo3.jpeg" alt="First Coffee" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">Divyaaa</h3>
+                <p class="text-sm text-elegant">Pulse 2023</p>
+              </div>
+            </div>
+          </div>
+        </div>
+                <!-- Gallery Item 8 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo14.jpeg" alt="Memories" class="w-full h-full object-cover" ></img>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">The Start</h3>
+                <p class="text-sm text-elegant">Its been 3 years</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo2.jpeg" alt="Team Work" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">Crazy Group</h3>
+                <p class="text-sm text-elegant">Shining in traditionals</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo6.jpeg" alt="Lunch Breaks" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">Traditional 2025</h3>
+                <p class="text-sm text-elegant">Moment to cherish for lifetime</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo1.jpeg" alt="Celebrations" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">Rajmachi Trek</h3>
+                <p class="text-sm text-elegant">The day you fell from bike 😂</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo13.jpeg" alt="Late Nights" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined"> Happy Birthday</h3>
+                <p class="text-sm text-elegant">Always keep smiling like this</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 6 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo8.jpeg" alt="Quiet Moments" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">Friends</h3>
+                <p class="text-sm text-elegant">Its all about the memories we created together</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 7 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo9.jpeg" alt="Adventures" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">Shared Adventures</h3>
+                <p class="text-sm text-elegant">Every journey was better together</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Item 8 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo10.jpeg" alt="Memories" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">Precious Memories</h3>
+                <p class="text-sm text-elegant">Moments that will last forever</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 8 -->
+        <div class="gallery-item scroll-reveal group">
+          <div class="card-premium rounded-2xl overflow-hidden aspect-square relative transform transition-all duration-300 hover:scale-105">
+            <img src="assets/photo15.jpeg" alt="Memories" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div class="text-center text-white p-4">
+                <h3 class="font-semibold mb-2 text-refined">Happy Faces </h3>
+                <p class="text-sm text-elegant">Pulse 2025</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Messages Section -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-4xl md:text-5xl font-light text-gradient-blue mb-4 text-elegant">
+          Words From My Heart
+        </h2>
+        <p class="text-xl text-bright-coral text-refined">
+          Things I want you to always remember
+        </p>
+      </div>
+      
+      <div class="space-y-8">
+        
+        <!-- Message 1 -->
+        <div class="card-premium rounded-3xl p-8 scroll-reveal">
+          <div class="flex items-start space-x-6">
+            <div class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl">
+              ✨
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-medium text-gray-800 mb-3 text-refined">You are the Best</h3>
+              <p class="text-gray-600 text-lg leading-relaxed text-elegant">
+               You are kind, genuine, and incredibly talented. 🌟 Yes, you are talented!
+In whatever you do, you give it your all -
+whether it's the job you do (even if you don't like it 😅),
+the way you propose business ideas 💡,
+your creativity in Insta posts/stories 🎨📸,
+or even the way you enjoy dancing 💃.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Message 2 -->
+        <div class="card-premium rounded-3xl p-8 scroll-reveal">
+          <div class="flex items-start space-x-6">
+            <div class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl">
+              🍜
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-medium text-gray-800 mb-3">Food Love 🍕</h3>
+<p class="text-gray-600 text-lg leading-relaxed">
+  I know your love for food knows no bounds, from spicy snacks to sweet cravings. 😋  
+  But hey, don’t forget to hydrate too! 💧  
+  Promise me you'll drink enough water every day, your body (and I) will thank you.
+  and focus on your workout that I know you will surely do. 😂💪
+</p>
+
+            </div>
+          </div>
+        </div>
+        
+        <!-- Message 2 -->
+<div class="card-premium rounded-3xl p-8 scroll-reveal">
+  <div class="flex items-start space-x-6">
+    <div class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl">
+      🚀
+    </div>
+    <div class="flex-1">
+      <h3 class="text-2xl font-medium text-gray-800 mb-3 text-refined">Ambitious & Dreamer</h3>
+      <p class="text-gray-600 text-lg leading-relaxed text-elegant">
+        Always stay ambitious and keep growing, higher and brighter, just like you were meant to. 🌟  
+        I truly hope you get the life you deserve, filled with purpose, joy, and everything you’ve ever dreamed of. 💖  
+        May all the success and love in the world come your way as you move forward. ✨💫
+      </p>
+    </div>
+  </div>
+</div>
+
+        <!-- Message 3 -->
+       <div class="card-premium rounded-3xl p-8 scroll-reveal">
+  <div class="flex items-start space-x-6">
+    <div class="w-16 h-16 glass-morphism rounded-2xl flex items-center justify-center text-2xl">
+      🌟
+    </div>
+    <div class="flex-1">
+      <h3 class="text-2xl font-medium text-gray-800 mb-3">Forever Grateful</h3>
+      <p class="text-gray-600 text-lg leading-relaxed">
+        Thank you for being a part of my life, I truly cherish it and hope it continues forever. 🤍  
+        I am and always will be there whenever you need me, and I promise to give my best and be capable enough to support you, always. 🤝💫
+      </p>
+    </div>
+  </div>
+</div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-20 px-6">
+  <div class="max-w-2xl mx-auto text-center">
+    <div class="glass-morphism rounded-3xl p-12 scroll-reveal">
+      <h3 class="text-3xl font-light text-gradient-gold mb-6 text-elegant">
+        Gratefully Yours
+      </h3>
+      <div class="text-4xl font-light text-super-bright mb-6 text-refined">
+        — Shubham
+      </div>
+      <p class="text-bright-cyan text-lg italic text-elegant">
+        "Some people make the world more beautiful just by being in it. 
+        You're one of those rare souls."
+      </p>
+    </div>
+
+    <!-- Bottom personal note section -->
+    <div class="mt-10 scroll-reveal">
+      <p class="text-sm text-soft-white italic text-elegant px-4">
+        Sentence Frame jari ChatGPT ne kela asla, tari thoughts mazech ahet baraka😆.
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Enhanced JavaScript -->
+  <script>
+    // Smooth scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll reveal elements
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
+  </div> <!-- End of Main Content -->
+
+  <!-- Authentication JavaScript -->
+  <script>
+    // Password configuration
+    const CORRECT_PASSWORD = "Divya2025"; // Change this to your desired password
+    
+    // Check if user is already authenticated
+    if (sessionStorage.getItem('authenticated') === 'true') {
+      showMainContent();
+    }
+    
+    // Handle form submission
+    document.getElementById('authForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const password = document.getElementById('passwordInput').value;
+      const errorMessage = document.getElementById('errorMessage');
+      
+      if (password === CORRECT_PASSWORD) {
+        // Correct password
+        sessionStorage.setItem('authenticated', 'true');
+        showMainContent();
+      } else {
+        // Wrong password
+        errorMessage.classList.remove('hidden');
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('passwordInput').focus();
+        
+        // Shake animation for error
+        const form = document.getElementById('authForm');
+        form.style.animation = 'shake 0.5s ease-in-out';
+        setTimeout(() => {
+          form.style.animation = '';
+        }, 500);
+      }
+    });
+    
+    // Show main content and hide auth overlay
+    function showMainContent() {
+      document.getElementById('authOverlay').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('authOverlay').style.display = 'none';
+        document.getElementById('mainContent').classList.remove('hidden');
+        document.getElementById('mainContent').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('mainContent').style.opacity = '1';
+        }, 100);
+      }, 500);
+    }
+    
+    // Add shake animation CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+      }
+      
+      #authOverlay {
+        transition: opacity 0.5s ease-in-out;
+      }
+      
+      #mainContent {
+        transition: opacity 0.3s ease-in-out;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Focus on password input when page loads
+    document.getElementById('passwordInput').focus();
+  </script>
+
+</body>
+</html>
